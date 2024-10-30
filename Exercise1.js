@@ -153,7 +153,7 @@ const fruit = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
 
 function removeFruits(fruit) {
   const modifiedArray = [...fruit];
-    const removedFruits = modifiedArray.splice(1,1)
+    const removedFruits = modifiedArray.splice(1,2)
     return {
         modifiedArray,
         removedFruits    
@@ -205,14 +205,12 @@ console.log(student.stud())
 const product = {
   name: 'Laptop',
   price: 999,
-  available: true,
-
-  pruc : function(){
-    return Object.entries(this)
-    
+  available: true, 
   }
-}
-console.log(...product.pruc())
+  function prod(product){
+    return product
+  }
+console.log(...product.prod())
 //output
 //[ 'name', 'Laptop' ] [ 'price', 999 ] [ 'available', true ] [ 'pruc', [Function: pruc] ]
 
