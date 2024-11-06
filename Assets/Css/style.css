@@ -1,0 +1,19 @@
+av-link {
+    background-color: rgba(230, 230, 230, 0.8); 
+    transition: background-color 0.3s; 
+}
+
+.nav-link:hover {
+    background-color: rgba(100, 149, 237, 0.8);
+    color: white; 
+}
+body {
+    background: linear-gradient(to bottom, #00c6ff, #0072ff); /* From light blue to dark blue */
+    height: 100vh;
+    margin: 0;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
