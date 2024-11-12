@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+    <body>
+        <section class="py-5 mt-5" id="rsgiterForm">
+            <div class="container d-flex justify-content-center align-items-center shadow-lg mt-5" style="max-width: 1000px; height: auto;">
+                <div class="row w-100 h-100">
+                    <div class="col-md-6 d-flex align-items-center justify-content-center h-100">
+                        <img src="Frame.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-md-6 bg-light d-flex align-items-center justify-content-center">
+                        <div class="bg-grey text-dark p-3 w-100 h-auto d-flex flex-column justify-content-center align-items-center">
+                            <!-- Message Display Section -->
+                            <div id="validationMessage" class="mb-3 w-100"></div> <!-- Validation/Error messages will go here -->
+                            <div id="successMessage" class="mb-3 w-100"></div> <!-- Success message will go here -->
+                            
+                            <form class="mb-3 w-75" id="registrationForm">
+                                <label for="userName" class="d-block fw-bold mb-2">User Name</label>
+                                <input type="text"class="login__input--user form-control mb-3" placeholder="Enter User Name">
+                                <label for="useNum" class="d-block fw-bold mb-2">U-Pin Num</label>
+                                <input type="number" class="login__input--pin form-control mb-3" placeholder="Enter U-Pin Number">
+                                <button type="button" class="btn btn-success fw-bold w-100" onclick="savedata()"  id="btnSubmit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <script src="script.js"></script>
+    </body>
+    </html>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
