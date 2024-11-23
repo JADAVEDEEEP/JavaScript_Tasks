@@ -17,7 +17,7 @@ const account1 = {
     '2020-05-08T14:11:59.604Z',
     '2020-05-27T17:01:17.194Z',
     '2020-07-11T23:36:17.929Z',
-    '2020-07-12T10:51:36.790Z',
+    '2024-11-14T10:51:36.790Z',
   ],
   currency: 'EUR',
   locale: 'pt-PT',
@@ -43,7 +43,9 @@ const account2 = {
   locale: 'en-US',
 };
 
-const accounts = [account1, account2];
+const accounts = JSON.parse(localStorage.getItem('accounts'));
+
+localStorage.setItem('accounts', JSON.stringify(accounts));
 
 //////////////////////////////////////////////// SELECTING ALL CLASS ELEMENTS FOR DOM MANIPULATION //////////////////////////////////////
 const labelWelcome = document.querySelector('.welcome');
@@ -63,6 +65,7 @@ const btnTransfer = document.querySelector('.form__btn--transfer');
 const btnLoan = document.querySelector('.form__btn--loan');
 const btnClose = document.querySelector('.form__btn--close');
 const btnSort = document.querySelector('.btn--sort');
+const btnSubmit = document.querySelector('.submit-button');
 
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
@@ -81,42 +84,49 @@ calcDisplayBalance(acc);
 };
 
 //////////////////////////////////////////////// IMPLEMENT DOM LOGICS OF BANK LIST /////////////////////////////////////////////
-const formatmovmentdate = function(date){
-const caldayspassed = (date1,date2) => 
-  Math.abs(date1-date2)/(1000*60*60*24)
-const day = `${date.getDate()}`.padStart(2, '0');
-const month = `${date.getMonth() + 1}`.padStart(2, '0');
-const year = date.getFullYear();
- return `${day}/${month}/${year}`
-
-}
-
-const displayMovements = function (transictions, sort = false) {
-containerMovements.innerHTML = ''; 
-
-const movs = sort ? transictions.slice().sort((a, b) => a - b) : transictions;
-
-movs.forEach(function (mov, i) {
-  const type = mov > 0 ? 'deposit' : 'withdrawal';
-
-  const date = new Date(currentAccount.transictionsDates[i]);
-  const displayDate = formatmovmentdate(date);
-  const formattedMov = new Intl.NumberFormat(currentAccount.locale, {
-    style: 'currency',
-    currency: 'INR',
-  }).format(mov);
-  const html = `
-    <div class="movements__row">
-      <div class="movements__type movements__type--${type}">
-        ${i + 1} ${type}
-      </div>
-      <div class="movements__date">${displayDate}</div>
-      <div class="movements__value">${formattedMov}</div>
-    </div>
-  `;
-  containerMovements.insertAdjacentHTML('afterbegin', html);
-});
+const formatMovementDate = function(date) {
+  const calDaysPassed = (date1, date2) => 
+    Math.abs(date1 - date2) / (1000 * 60 * 60 * 24);
+  const day = `${date.getDate()}`.padStart(2, '0');
+  const month = `${date.getMonth() + 1}`.padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
 };
+
+const displayMovements = function (transitions, sort = false) {
+  containerMovements.innerHTML = ''; 
+
+  const movs = sort ? transitions.slice().sort((a, b) => a - b) : transitions;
+
+  movs.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    // Capture the current date for each transaction
+    const currentDate = new Date();
+    const displayDate = formatMovementDate(currentDate);
+
+    // Optionally, store the current date in the transactions array for future use
+    currentAccount.transictionsDates[i] = currentDate; // You can store the current date here
+
+    const formattedMov = new Intl.NumberFormat(currentAccount.locale, {
+      style: 'currency',
+      currency: 'INR',
+    }).format(mov);
+    
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">
+          ${i + 1} ${type}
+        </div>
+        <div class="movements__date">${displayDate}</div>
+        <div class="movements__value">${formattedMov}</div>
+      </div>
+    `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+    localStorage.setItem('accounts', JSON.stringify(accounts));
+  });
+};
+
 ///////////////////////////////// COMPUTING USERNAME ////////////////////////////////////
 
 const createUsername = function (accounts) {
@@ -144,68 +154,118 @@ calcDisplayBalance(account1);
 ////////////////////////////////////////////CREATING DATES IN ACCOUNTS AND LOGIN PART ///////////////////////////////////////////////
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
-  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value); 
 
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+  // Find the current account based on username
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+
+  if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
+
     labelWelcome.textContent = `Welcome back, ${currentAccount.username.split(' ')[0]}`;
-    containerApp.style.opacity = 100;
-    
-  
-    const updateTime = function() {
+    containerApp.style.opacity = 1;
+
+    inputLoginUsername.style.display = 'none';
+    inputLoginPin.style.display = 'none';
+    btnLogin.style.display = 'none';
+    btnSubmit.style.display = 'none';
+
+    const updateTime = function () {
       const now = new Date();
       const day = `${now.getDate()}`.padStart(2, '0');
       const month = `${now.getMonth() + 1}`.padStart(2, '0');
       const year = now.getFullYear();
-      const hour = now.getHours();
-      const min = now.getMinutes();
-      const seconds = now.getSeconds();
-    
+      const hour = `${now.getHours()}`.padStart(2, '0');
+      const min = `${now.getMinutes()}`.padStart(2, '0');
+      const seconds = `${now.getSeconds()}`.padStart(2, '0');
+
       const dayName = now.toLocaleDateString('en-US', { weekday: 'long' });
-  
+
       labelDate.textContent = `${dayName}, ${day}/${month}/${year} Time: ${hour}:${min}:${seconds}`;
     };
 
     setInterval(updateTime, 1000);
+
     displayMovements(currentAccount.transictions);
     calcDisplayBalance(currentAccount);
 
-  } else {
-    messageElement.innerText = 'Invalid username or pin';
+    localStorage.setItem('accounts', JSON.stringify(accounts));
+
+    messageElement.innerText = 'Login successful!';
+    
+  messageElement.style.cssText = 'color: green; font-weight: bold; padding: 10px; margin-top: 10px; border: 1px solid green; background-color: #e0ffe0; border-radius: 5px;';
+  setTimeout(() => {
+    messageElement.innerText = '';
+    messageElement.style.cssText = ''; 
+}, 3000)  
+} else {
+    messageElement.innerText = 'Invalid username or PIN.';
     messageElement.style.cssText = 'color: red; font-weight: bold; padding: 10px; margin-top: 10px; border: 1px solid red; background-color: #ffe0e0; border-radius: 5px;';
+    setTimeout(() => {
+      messageElement.innerText = '';
+      messageElement.style.cssText = ''; 
+  }, 3000)
   }
 });
 
 
 
+
+
 //////////////////////////////////////////////TRANSFER MONEY USING NAME//////////////////////
-const messageElement = document.getElementById('message'); 
-const messageElement2 = document.getElementById('two'); 
+const messageElement = document.getElementById('message');  
+const messageElement2 = document.getElementById('two');
 
-btnTransfer.addEventListener('click', function (e) {
-e.preventDefault();
-
-const amount = Number(inputTransferAmount.value);
-const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
-
-if (
-  amount > 0 &&
-  receiverAcc &&
-  currentAccount.balance >= amount &&
-  receiverAcc?.username !== currentAccount.username
-) {
-  currentAccount.transictions.push(-amount);
-  receiverAcc.transictions.push(amount);
-  currentAccount.transictionsDates.push(new Date());
-  receiverAcc.transictionsDates.push(new Date());
-  displayMovements(currentAccount.transictions);
-  calcDisplayBalance(currentAccount);
-  messageElement.innerText = `Transfer ${amount}€ to ${receiverAcc.owner} completed.`; messageElement.style.cssText = 'color: green; font-weight: bold; padding: 10px; margin: 5px; border: 1px solid green; background-color: #e0ffe0; border-radius: 5px;';
-  messageElement2.innerText = ''; 
-} else {
-  messageElement.innerText = 'Insufficient Balance'; messageElement.style.cssText = 'color: red; font-weight: bold; padding: 10px; margin-top: 10px; border: 1px solid red; background-color: #ffe0e0; border-radius: 5px;';
-  messageElement2.innerText = ''; 
-}
+btnTransfer.addEventListener('click', function (e) { 
+    e.preventDefault();  
+    
+    const amount = Number(inputTransferAmount.value);
+    const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+    
+    if (!receiverAcc) {
+        messageElement.innerText = 'Recciver Account Doesnt Exist.';
+        messageElement.style.cssText = 'color: red; font-weight: bold; padding: 10px; margin-top: 10px; border: 1px solid red; background-color: #ffe0e0; border-radius: 5px;';
+        messageElement2.innerText = '';
+        
+        setTimeout(() => {
+            messageElement.innerText = '';
+            messageElement.style.cssText = '';
+        }, 3000);
+        return;
+    }
+    
+    if (
+        amount > 0 && 
+        currentAccount.balance >= amount && 
+        receiverAcc.username !== currentAccount.username 
+    ) {
+        currentAccount.transictions.push(-amount);
+        receiverAcc.transictions.push(amount);
+        currentAccount.transictionsDates.push(new Date());
+        receiverAcc.transictionsDates.push(new Date());
+        
+        displayMovements(currentAccount.transictions);
+        calcDisplayBalance(currentAccount);
+        messageElement.innerText = `Transfer ${amount}€ to ${receiverAcc.owner} completed.`;
+        messageElement.style.cssText = 'color: green; font-weight: bold; padding: 10px; margin: 5px; border: 1px solid green; background-color: #e0ffe0; border-radius: 5px;';
+        messageElement2.innerText = '';
+      
+        setTimeout(() => {
+            messageElement.innerText = '';
+            messageElement.style.cssText = ''; 
+        }, 3000);
+        localStorage.setItem('accounts', JSON.stringify(accounts));
+    } else {
+        messageElement.innerText = 'Insufficient Balance';
+        messageElement.style.cssText = 'color: red; font-weight: bold; padding: 10px; margin-top: 10px; border: 1px solid red; background-color: #ffe0e0; border-radius: 5px;';
+        messageElement2.innerText = '';
+        
+        setTimeout(() => {
+            messageElement.innerText = '';
+            messageElement.style.cssText = '';
+        }, 3000);
+    }
 });
+
+
 /////////////////////////////////////////////////////////////////REQUST LOAN SECTION////////////////////////////////////////////////
 btnLoan.addEventListener('click', function (e) {
 e.preventDefault();
@@ -218,6 +278,11 @@ if (amount > 0 && currentAccount.transictions.some(mov => mov >= amount * 0.1)) 
     innerText: `Loan of ${amount}€ has been approved and added to your account.`,
     style: "color: green; font-weight: bold; padding: 10px; margin-top: 10px; border: 1px solid green; background-color: #e0ffe0; border-radius: 5px; font-size: 1rem;"
 });
+
+setTimeout(() => {
+  messageElement2.innerText = '';
+  messageElement2.style.cssText = ''; 
+}, 3000);
 messageElement.innerText = '';
 } else {
   //its used to modfied Target propties of message elments 2 
@@ -225,6 +290,11 @@ messageElement.innerText = '';
     innerText: `Loan denied. Insufficient deposit. Your highest deposit is: ${Math.max(...currentAccount.transictions)}€`,
     style: "color: red; font-weight: bold; padding: 10px; margin-top: 10px; border: 1px solid red; background-color: #ffe0e0; border-radius: 5px; font-size: 1rem;"
 });
+
+setTimeout(() => {
+  messageElement2.innerText = '';
+  messageElement2.style.cssText = ''; 
+}, 3000);
 }
 inputLoanAmount.value = '';
 });
@@ -264,8 +334,9 @@ window.location.reload();
 ///////////////////////////////////////////////////////// CREATION OF NEW USERS //////////////////////////////////////
 function savedata() {
   const newAccount = {
-    owner: inputLoginUsername.value,        
-    pin: inputLoginPin.value, 
+    owner: inputLoginUsername.value,    
+    pin: inputLoginPin.value,     
+    // pin: Number(inputLoginPin.value), 
     transactions: [1000],          
     transactionDates: [new Date().toISOString()],  
     currency: 'IND',           
@@ -277,11 +348,12 @@ function savedata() {
     .split(' ')
     .map(name => name[0])
     .join('');
-
   accounts.push(newAccount);
-  console.log('New account created:', newAccount);
+  console.log('New account created:', newAccount)
   Object.assign(successMessage, { 
     textContent: `🎉 Account successfully created for ${newAccount.owner} with balance ${newAccount.transactions[0]}€`, 
     style: "color: #155724; font-weight: bold; padding: 15px; margin-top: 15px; border: 1px solid #c3e6cb; background-color: #d4edda; border-radius: 8px; font-size: 1.1rem; font-family: Arial, sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: inline-block;"
-});
+  })
+  localStorage.setItem('accounts', JSON.stringify(accounts));
+   window.location.href = 'index.html';
 }
