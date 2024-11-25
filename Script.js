@@ -4,8 +4,8 @@
 ////////////////////BANK LIST PREVIOUS CODE //////////////////////////////////////////////
 
 const account1 = {
-  owner: 'deep jadav',
-  transictions: [200],
+  owner: 'dj',
+  transictions: [1000],
   interestRate: 1.2,
   pin: 1111,
 
@@ -24,7 +24,7 @@ const account1 = {
 };
 
 const account2 = {
-  owner: 'Jessica Davis',
+  owner: 'jd',
   transictions: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
@@ -43,7 +43,9 @@ const account2 = {
   locale: 'en-US',
 };
 
-const accounts = JSON.parse(localStorage.getItem('accounts'));
+const accounts = JSON.parse(localStorage.getItem('accounts')) || [account1,account2]
+console.log(accounts)
+
 
 localStorage.setItem('accounts', JSON.stringify(accounts));
 
@@ -67,7 +69,7 @@ const btnClose = document.querySelector('.form__btn--close');
 const btnSort = document.querySelector('.btn--sort');
 const btnSubmit = document.querySelector('.submit-button');
 
-const inputLoginUsername = document.querySelector('.login__input--user');
+const inputLoginUsername = document.querySelector('#login__input--user').value;
 const inputLoginPin = document.querySelector('.login__input--pin');
 const nameInput = document.querySelector('#userName')
 const pinInput = document.querySelector('#useNum')
@@ -93,10 +95,10 @@ const formatMovementDate = function(date) {
   return `${day}/${month}/${year}`;
 };
 
-const displayMovements = function (transitions, sort = false) {
+const displayMovements = function (transictions, sort = false) {
   containerMovements.innerHTML = ''; 
 
-  const movs = sort ? transitions.slice().sort((a, b) => a - b) : transitions;
+  const movs = sort ? transictions.slice().sort((a, b) => a - b) : transictions;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
@@ -129,17 +131,18 @@ const displayMovements = function (transitions, sort = false) {
 
 ///////////////////////////////// COMPUTING USERNAME ////////////////////////////////////
 
-const createUsername = function (accounts) {
-accounts.forEach(function (account) {
-    account.username = account.owner
-        .toLowerCase()
-        .split(' ')
-        .map(name => name[0])
-        .join('');
-});
-};
+// const createUsername = function (accounts) {
+// accounts.forEach(function (account) {
+//     account.usernam = account.owner
+//         .toLowerCase()
+//         .split(' ')
+//         .map(name => name[0])
+//         .join('');
+       
+// });
+// };
 
-createUsername(accounts); 
+// createUsername(accounts); 
 console.log(accounts);
 ///////////////////////////////////////////////////// REDUCE METHOD CURRENT BALANCE  //////////////////////////////////////////
 const calcDisplayBalance = function (account) { 
@@ -154,9 +157,10 @@ calcDisplayBalance(account1);
 ////////////////////////////////////////////CREATING DATES IN ACCOUNTS AND LOGIN PART ///////////////////////////////////////////////
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
-
+  console.log(inputLoginUsername)
   // Find the current account based on username
-  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  currentAccount = accounts.find(acc => acc.owner === inputLoginUsername.value);
+
 
   if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
 
@@ -235,7 +239,7 @@ btnTransfer.addEventListener('click', function (e) {
     if (
         amount > 0 && 
         currentAccount.balance >= amount && 
-        receiverAcc.username !== currentAccount.username 
+        receiverAcc.username !== currentAccount.username
     ) {
         currentAccount.transictions.push(-amount);
         receiverAcc.transictions.push(amount);
@@ -270,7 +274,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
 e.preventDefault();
 const amount = Math.floor(inputLoanAmount.value);
-if (amount > 0 && currentAccount.transictions.some(mov => mov >= amount * 0.1)) {
+if (amount > 0 && currentAccount.transictions.some(mov => mov>= amount * 0.1)) {
   currentAccount.transictions.push(amount);
   currentAccount.transictionsDates.push(new Date());
   updateUI(currentAccount)
@@ -334,9 +338,8 @@ window.location.reload();
 ///////////////////////////////////////////////////////// CREATION OF NEW USERS //////////////////////////////////////
 function savedata() {
   const newAccount = {
-    owner: inputLoginUsername.value,    
-    pin: inputLoginPin.value,     
-    // pin: Number(inputLoginPin.value), 
+    owner: inputLoginUsername.value,       
+     pin: Number(inputLoginPin.value), 
     transactions: [1000],          
     transactionDates: [new Date().toISOString()],  
     currency: 'IND',           
