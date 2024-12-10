@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="stylesheet" href="../Css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+ 
+        <title>Responsive Navbar</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        </head>
+        <body>
+          <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+          <script>
+            AOS.init();
+          </script>
+          <!------------------------------------------------------------SECTION 1------------------------------------------------------------>
+           <div class="container p-2">
+           <div class="logo-section d-flex justify-content-start align-items-center mb-5 mb-md-0 flex-shrink-0">
+           <nav class="navbar navbar-expand-lg navbar-light w-100">
+          
+            <div class="container-fluid">
+              <span class="fw-bold fs-5 mx-4">cyber</span>
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+               
+                <div class="collapse navbar-collapse mx-auto" id="navbarNavDropdown">
+                  <input type="text" name="search" class="form-control-lg bg-light input-lg mx-4 col-4 d-none d-lg-block" style="border-radius: 5; border-color: rgba(245, 245, 245, 1);border:none;" placeholder="Search">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                         
+                            <a class="nav-link active fw-bold mx-2 " aria-current="page" id="log" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mute mx-2" href="FilterPage.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mute mx-2" href="#">ContactUs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mute  mx-2" href="#" tabindex="-1" aria-disabled="true">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link mx-2">
+                              <i class="far fa-heart"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="AddToCart.html" class="nav-link mx-2">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link mx-2">
+                              <i class="fa-regular fa-user"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="container-fluid d-flex align-items-center justify-content-center vh-80 " 
+style="background-image: linear-gradient(to right, rgba(33, 28, 36, 1), rgba(33, 28, 36, 1));">
+<div class="container">
+<div class="row align-items-center">
+  <div class="col-lg-6 col-md-12 p-4 text-center text-md-start" data-aos="fade-right"data-aos-delay="500">
+    <h1 class="text-white fade-in" style="opacity: 0.5;">Pro.Beyond.</h1>
+    <h1 class="mb-4 display-1 text-white fade-in">
+      <span class="display-1 fw-lighter">IPhone 14</span>
+      <span class="fw-bold diplay-1">Pro</span>
+    </h1>
+    <p class="fs-6 text-white fade-in" style="opacity: 0.5;">
+      Created to change everything for the better. For everyone
+    </p>
+    <a href="FilterPage.html" style="text-decoration: none;">
+      <button type="button" class="btn btn-lg btn-dark mt-3 fade-in" 
+              style="background-image: linear-gradient(to right, rgba(33, 28, 36, 1), rgba(33, 28, 36, 1)); 
+              border-radius: 5px; font-size: 1.5rem; border: 1px solid; color: white; width: 250px; padding: 20px;">
+          Shop Now
+      </button>
+  </a>
+  
+  </div>
+  <div class="col-lg-6 col-md-12 text-center text-lg-start"data-aos="fade-left" data-aos-delay="500">
+    <img src="../ImgAssets/Iphone.png" class="img-fluid fade-in" alt="Iphone" 
+        style="max-height: 300%; width: auto; margin-top: 20px;">
+  </div>
+</div>
+</div>
+</div>
+<!-----------------------------------------------------------------SECTION 2------------------------------------------------------------------->
+
+<div class="container my-5 p-3 bg-light">
+  <div class="row g-4">
+    
+    <div class="col-md-4 d-flex flex-column flex-md-row align-items-center">
+      <div class="mb-3 mb-md-0 mx-3">
+        <img src="../ImgAssets/PlayStation.png" alt="PlayStation 5" class="img-fluid rounded" style="height: 150px; width: 150px; object-fit: cover;">
+      </div>
+      <div class="ms-md-3 text-center text-md-start">
+        <h3 class="fw-bold">PlayStation 5</h3>
+        <p class="text-muted">Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.</p>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex flex-column flex-md-row align-items-center">
+      <div class="order-md-2 mb-3 mb-md-0 mx-3">
+        <img src="../ImgAssets/MacBook Pro 14.png" alt="MacBook Air" class="img-fluid rounded" style="height: 150px; width: 150px; object-fit: cover;">
+      </div>
+      <div class="ms-md-3 text-center text-md-start">
+        <h3 class="fw-bold">MacBook Air</h3>
+        <p class="text-muted">The new 15-inch MacBook Air makes room for more of what you love with a spacious  Liquid Retina display.</p>
+        <button class="btn btn-dark btn-sm">Shop Now</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row g-4 mt-4 ">
+    <div class="col-md-4 d-flex flex-column flex-md-row align-items-center">
+      <div class="mb-3 mb-md-0">
+        <img src="../ImgAssets/earphne.png" alt="Apple AirPods Max" class="img-fluid rounded" style="height: 150px; width: 150px; object-fit: cover;">
+      </div>
+      <div class="ms-md-3 text-center text-md-start">
+        <h5 class="fw-bold">Apple AirPods Max</h5>
+        <p class="text-muted">Computational audio. Listen, it's powerful.</p>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex flex-column flex-md-row align-items-center">
+      <div class="mb-3 mb-md-0">
+        <img src="../ImgAssets/vr.png" alt="Apple Vision Pro" class="img-fluid rounded" style="height: 150px; width: 300px; object-fit: cover;">
+      </div>
+      <div class="ms-md-3 mx-5 text-center text-md-start ">
+        <h5 class="fw-bold mx-5">Apple Vision Pro</h5>
+        <p class="text-muted mx-5">An immersive way to experience entertainment.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+ <!-----------------------------------------------------------SECTION 3----------------------------------------------------------->
+
+<div class="container mt-3">
+  <h1 class="fs-4 p-5 text-start">Browse By Category</h1>
+  <div class="d-flex justify-content-between align-items-center">
+    
+    <button class="btn btn-light" id="prevButton"><i class="bi bi-chevron-left"></i></button>
+
+    <div class="category-scroll-container d-flex overflow-auto" style="scroll-behavior: smooth;">
+      <div class="col d-flex justify-content-center mx-3">
+        <div class="card text-center bg-light border-0 d-flex justify-content-center align-items-center" style="width: 10rem; height: 10rem;">
+          <div>
+            <img src="../ImgAssets/Phones.png" class="img-fluid " alt="Phones" style="width: 50px; height: 50px;">
+            <h5 class="card-title fs-6 mt-2">Phones</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col d-flex justify-content-center mx-3">
+        <div class="card text-center bg-light border-0 d-flex justify-content-center align-items-center" style="width: 10rem; height: 10rem;">
+          <div>
+            <img src="../ImgAssets/Smart Watches.png" class="img-fluid mx-auto" alt="Smart Watches" style="width: 50px; height: 50px;">
+            <h5 class="card-title fs-6 mt-2">Smart Watches</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col d-flex justify-content-center mx-3">
+        <div class="card text-center bg-light border-0 d-flex justify-content-center align-items-center" style="width: 10rem; height: 10rem;">
+          <div>
+            <img src="../ImgAssets/Cameras.png" class="img-fluid mx-auto" alt="Cameras" style="width: 50px; height: 50px;">
+            <h5 class="card-title fs-6 mt-2">Cameras</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col d-flex justify-content-center mx-3">
+        <div class="card text-center bg-light border-0 d-flex justify-content-center align-items-center" style="width: 10rem; height: 10rem;">
+          <div>
+            <img src="../ImgAssets/Headphones.png" class="img-fluid mx-auto" alt="Headphones" style="width: 50px; height: 50px;">
+            <h5 class="card-title fs-6 mt-2">Headphones</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col d-flex justify-content-center mx-3">
+        <div class="card text-center bg-light border-0 d-flex justify-content-center align-items-center" style="width: 10rem; height: 10rem;">
+          <div>
+            <img src="../ImgAssets/Computers.png" class="img-fluid mx-auto" alt="Computers" style="width: 50px; height: 50px;">
+            <h5 class="card-title fs-6 mt-2">Computers</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col d-flex justify-content-center mx-3">
+        <div class="card text-center bg-light border-0 d-flex justify-content-center align-items-center" style="width: 10rem; height: 10rem;">
+          <div>
+            <img src="../ImgAssets/Gaming.png" class="img-fluid mx-auto" alt="Gaming" style="width: 50px; height: 50px;">
+            <h5 class="card-title fs-6 mt-2">Gaming</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-light" id="nextButton"><i class="bi bi-chevron-right"></i></button>
+  </div>
+</div>
+<!------------------------------------------------------------SECTION 4------------------------------------------------------------>
+
+<div class="container p-5">
+  <div class="d-flex flex-row bd-highlight mx-4">
+    <div class="p-2 bd-highlight text-muted">
+      <h6 style="transition: color 0.3s ease, transform 0.3s ease;" 
+           onmouseover="this.style.color='#007bff'; this.style.transform='scale(1.1)';" 
+           onmouseout="this.style.color=''; this.style.transform='';"
+           onmousedown="this.style.color='#0056b3'; this.style.transform='scale(1.05)';"
+           onmouseup="this.style.color='#007bff'; this.style.transform='scale(1.1)';">
+        New Arrival
+      </h6>
+    </div>
+    <div class="p-2 bd-highlight text-muted">
+      <h6 style="transition: color 0.3s ease, transform 0.3s ease;" 
+           onmouseover="this.style.color='#007bff'; this.style.transform='scale(1.1)';" 
+           onmouseout="this.style.color=''; this.style.transform='';"
+           onmousedown="this.style.color='#0056b3'; this.style.transform='scale(1.05)';"
+           onmouseup="this.style.color='#007bff'; this.style.transform='scale(1.1)';">
+        Best Seller
+      </h6>
+    </div>
+    <div class="p-2 bd-highlight text-muted">
+      <h6 style="transition: color 0.3s ease, transform 0.3s ease;" 
+           onmouseover="this.style.color='#007bff'; this.style.transform='scale(1.1)';" 
+           onmouseout="this.style.color=''; this.style.transform='';"
+           onmousedown="this.style.color='#0056b3'; this.style.transform='scale(1.05)';"
+           onmouseup="this.style.color='#007bff'; this.style.transform='scale(1.1)';">
+        Featured Products
+      </h6>
+    </div>
+  </div>
+      <div class="row" id="productContainer">
+      </div>
+      </div>
+
+  <!------------------------------------------------------------SECTION 5------------------------------------------------------------>
+<!--     
+  
+</div> -->
+<div id="cardCarousel" class="carousel slide d-block d-md-none" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="d-flex justify-content-center">
+        <div class="card mx-2" style="width: 14rem;">
+          <img class="card-img-top" src="../ImgAssets/Group 1.png" alt="Card image cap">
+          <div class="card-body p-3">
+            <h6 class="card-title fs-thin">Popular Products</h6>
+            <p class="text-muted text-start" style="font-size: 0.85rem;">
+              Pad combines a magnificent 10.2-inch Retina display, incredible performance.
+            </p>
+            <button type="button" class="btn text-dark mt-2" 
+            style="background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)); 
+            border-radius: 5px; font-size: 0.9rem; border: 1px solid; color: white; width: 100%; padding: 10px;">
+              Shop Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="carousel-item">
+      <div class="d-flex justify-content-center">
+        <div class="card mx-2" style="width: 14rem;">
+          <img class="card-img-top" src="../ImgAssets/Group2.png" alt="Card image cap">
+          <div class="card-body p-3">
+            <h6 class="card-title">Ipad Pro</h6>
+            <p class="text-muted" style="font-size: 0.85rem;">Pad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use.</p>
+            <button type="button" class="btn text-dark  mt-2" 
+            style="background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)); 
+            border-radius: 5px; font-size: 0.9rem; border: 1px solid; color: white; width: 100%; padding: 10px;">
+              Shop Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="carousel-item">
+      <div class="d-flex justify-content-center">
+        <div class="card mx-2 " style="width: 14rem;">
+          <img class="card-img-top" src="../ImgAssets/Group3.png" alt="Card image cap">
+          <div class="card-body p-3">
+            <h6 class="card-title">Samsung Galaxy</h6>
+            <p class="text-muted" style="font-size: 0.85rem;">Pad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use</p>
+            <button type="button" class="btn text-dark mt-2" 
+            style="background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)); 
+            border-radius: 5px; font-size: 0.9rem; border: 1px solid; color: white; width: 100%; padding: 10px;">
+              Shop Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="d-flex justify-content-center">
+        <div class="card mx-2 " style="width: 14rem;">
+          <img class="card-img-top" src="../ImgAssets/Group4.png" alt="Card image cap">
+          <div class="card-body p-3">
+            <h6 class="card-title">Mackbook Pro</h6>
+            <p class="text-muted opacity-5o%" style="font-size: 0.85rem;">Pad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use</p>
+            <button type="button" class="btn text-dark mt-2" 
+            style="background-image: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,1)); 
+            border-radius: 5px; font-size: 0.9rem; border: 1px solid; color: white; width: 100%; padding: 10px;">
+              Shop Now
+            </button>
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  
+  <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="container d-none d-md-block">
+  <div class="row row-cols-1 row-cols-md-4 g-3">
+  
+    <div class="col">
+      <div class="card mx-auto" style="width: 17rem;">
+        <img class="card-img-top" src="../ImgAssets/Group 5.png" alt="Card image cap" style="height: 275px;">
+        <div class="card-body p-3">
+          <h6 class="card-title fs-thin">Popular Products</h6>
+          <p class="text-muted" style="font-size: 0.85rem;">Pad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use.</p>
+          <button type="button" class="btn text-dark mt-2" 
+          style="background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)); 
+          border-radius: 5px; font-size: 0.9rem; border: 1px solid; color: white; width: 100%; padding: 10px;">
+            Shop Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    
+     <div class="col">
+      <div class="card mx-auto" style="width: 17rem;">
+        <img class="card-img-top" src="../ImgAssets/Group2.png" alt="Card image cap">
+        <div class="card-body p-3">
+          <h6 class="card-title fs-thin">Ipad Pro</h6>
+          <p class="text-muted" style="font-size: 0.85rem;">iPad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use..</p>
+          <button type="button" class="btn text-dark mt-2" 
+          style="background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)); 
+          border-radius: 5px; font-size: 0.9rem; border: 1px solid; color: white; width: 100%; padding: 10px;">
+            Shop Now
+          </button>
+        </div>
+      </div>  
+    </div>
+
+    <div class="col">
+      <div class="card mx-auto" style="width: 17rem;">
+        <img class="card-img-top" src="../ImgAssets/Group3.png" alt="Card image cap">
+        <div class="card-body p-3">
+          <h6 class="card-title fs-thin">Samsung Galaxy</h6>
+          <p class="text-muted" style="font-size: 0.85rem;">iPad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use.</p>
+          <button type="button" class="btn text-dark mt-2" 
+          style="background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)); 
+          border-radius: 5px; font-size: 0.9rem; border: 1px solid; color: white; width: 100%; padding: 10px;">
+            Shop Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card mx-auto" style="width: 17rem;">
+        <img class="card-img-top" src="../ImgAssets/Group4.png" alt="Card image cap" style="height: 270px;">
+        <div class="card-body p-3">
+          <h6 class="card-title fs-thin">Macbook Pro</h6>
+          <p class="text-muted" style="font-size: 0.85rem;">Pad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use..</p>
+          <button type="button" class="btn text-dark mt-2" 
+          style="background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)); 
+          border-radius: 5px; font-size: 0.9rem; border: 1px solid; color: white; width: 100%; padding: 10px;">
+            Shop Now
+          </button>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+<!------------------------------------------------------------SECTION 6------------------------------------------------------------>
+
+<div class="container p-5">
+  <div class="d-flex flex-row bd-highlight mx-4">
+    <div class="p-2 bd-highlight text-muted">
+     
+      <div class="row" id="catrgoryContainer">
+          <h5>Discounts up to -50%</h5>
+            
+      </div>
+      </div>
+</div>
+</div>
+
+
+ <!------------------------------------------------------------SECTION 7------------------------------------------------------------> 
+ <div class="container-fluid" style="padding: 0; margin: 0;">
+  <div class="img-section7" style="height: 70vh; padding: 0; margin: 0;">
+    <div class="text-center" style="background-image: url('../ImgAssets/kal.png'); background-size: cover; background-position: center; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; width: 100%; margin: 0;">
+      <h1 class="text-white fw-lighter" style="font-size: 3.5rem;">
+        Big Summer <span class="fw-bold">Sale</span>
+      </h1>
+      <p class="fs-6 text-white fade-in" style="opacity: 0.7; font-size: 1.2rem;">
+        Commodo fames vitae vitae leo mauris in. Eu consequat.
+      </p>
+      <button type="button" class="btn btn-lg btn-dark mt-3 fade-in" style="background-image: linear-gradient(to right, rgba(33, 28, 36, 1), rgba(33, 28, 36, 1)); border-radius: 5px; font-size: 1.5rem; border: 1px solid; color: white; width: 250px; padding: 20px;">
+        Shop Now
+      </button>
+    </div>
+  </div>
+</div>
+
+
+ <!------------------------------------------------------------SECTION 8------------------------------------------------------------>
+
+ <section class="Eith-section text-center p-5" style="background-color: rgba(0, 0, 0, 1);">
+  <div class="container text-center text-md-start mt-5">
+    <div class="row d-flex justify-content-between"> 
+      
+      <div class="col-md-3 col-lg-4 text-white">
+        <h1 class="fs-3">Cyber</h1>
+        <p class="fs-6 text-white fade-in mt-4" style="opacity: 0.5;">
+          We are a residential interior design firm located in Portland. Our boutique-studio offers more than
+        </p>
+        <div class="d-flex justify-content-start align-items-start gap-1 py-5">
+          <img src="../ImgAssets/Twitter.png" alt="Twitter Logo" class="img-fluid mx-3">
+          <img src="../ImgAssets/Facebook.png" alt="Facebook Logo" class="img-fluid mx-3">
+          <img src="../ImgAssets/Tiktok.png" alt="TikTok Logo" class="img-fluid mx-3">
+          <img src="../ImgAssets/Instagram.png" alt="Instagram Logo" class="img-fluid mx-3">
+        </div>
+      </div>
+
+      <div class="col-md-2 col-lg-2 text-white text-center">
+        <h6 class="text-white fs-4 fw-bold mb-4">
+          Services
+        </h6>
+        <p style="opacity: 0.6;">Bonus Program</p>
+        <p style="opacity: 0.6;">Gift Cards</p>
+        <p style="opacity: 0.6;">Credit and Payment</p>
+        <p style="opacity: 0.6;">Service Contracts</p>
+        <p style="opacity: 0.6;">On-Cash Account</p>
+        <p style="opacity: 0.6;">Payment</p>
+      </div>
+
+      <div class="col-md-6 col-lg-6 text-white text-center">
+        <h6 class="text-white fs-4 fw-bold mb-4">
+          Assistance to the Buyer
+        </h6>
+        <p style="opacity: 0.6;">
+          <a href="#!" class="tex-start"></a>
+        </p>
+        <p style="opacity: 0.6;">Find an order</p>
+        <p style="opacity: 0.6;">Terms of delivery</p>
+        <p style="opacity: 0.6;">Exchange and return of goods</p>
+        <p style="opacity: 0.6;">Guarantee</p>
+        <p style="opacity: 0.6;">Terms of use of the site</p>
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">      
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFx2eVPIIhDbfgy2ZzOluHVRnHppE7RZC2wqi2UAKQSA8zBtQ+8W1T4K5g" crossorigin="anonymous"></script>
+    </body>
+   
+    <script src="../JS/script.js"></script>
+    </html>
+    

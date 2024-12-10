@@ -1,0 +1,48 @@
+[
+    {
+      "name": "Catherine Brown",
+      "description": "The product is average; expected better.",
+      "star": 3
+    },
+    {
+      "name": "David Wilson",
+      "description": "Terrible experience, would not recommend.",
+      "star": 1
+    },
+    {
+      "name": "Emily Davis",
+      "description": "Solid product, works as described Premium.",
+      "star": 4
+    },
+    {
+      "name": "Frank Miller",
+      "description": "Fast delivery and great customer service!",
+      "star": 5
+    },
+    {
+      "name": "Grace Lee",
+      "description": "Not bad, but the packaging was damaged.",
+      "star": 3
+    },
+    {
+      "name": "Henry Clark",
+      "description": "Exceeded my expectations in every way!",
+      "star": 5
+    },
+    {
+      "name": "Ivy Scott",
+      "description": "It’s okay, but there are better alternatives.",
+      "star": 3
+    },
+    {
+      "name": "Jack Walker",
+      "description": "Great value for the price. Highly",
+      "star": 4
+    },
+    {
+      "name": "deep jadav",
+      "description": "Great value for the price. Highly",
+      "star": 2
+    }
+  ]
+  

@@ -1,0 +1,60 @@
+
+/* Active effect (when clicked) */
+.hover-effect:active {
+  color: #0056b3; /* A darker shade for the active state */
+  transform: scale(1.05); /* Slight scale down effect when clicked */
+}
+body {
+  background: grey;
+  padding-top: 2rem;
+}
+
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+}
+body {
+  background: grey;
+  padding-top: 2rem;
+}
+
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+}
+.filter-container {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.filter-group input[type="range"] {
+  width: 80%;
+}
+
+.filter-group span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-select {
+  font-size: 14px;
+}
+.collapse.show + .nav-link .fas {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+

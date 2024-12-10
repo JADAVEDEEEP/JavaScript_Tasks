@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="stylesheet" href="../Css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 
+        <title>Responsive Navbar</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        </head>
+        <body>
+          <!------------------------------------------------------------SECTION 1------------------------------------------------------------>
+           <div class="container p-2">
+           <div class="logo-section d-flex justify-content-start align-items-center mb-3 mb-md-0 flex-shrink-0">
+           <nav class="navbar navbar-expand-lg navbar-light w-100">
+            
+           
+            <div class="container-fluid">
+                <span class="fw-bold fs-5 mx-4">cyber</span>
+                <input type="text" name="search" class="form-control-lg bg-light input-lg mx-4 col-4 d-none d-lg-block" style="border-radius: 5; border-color: rgba(245, 245, 245, 1);border:none;" placeholder="Search">
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+               
+                <div class="collapse navbar-collapse mx-auto" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active fw-bold mx-2 " aria-current="page" id="log" href="Index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mute mx-2" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mute mx-2" href="#">ContactUs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mute  mx-2" href="#" tabindex="-1" aria-disabled="true">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link mx-2">
+                              <i class="far fa-heart"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link mx-2">
+                                <i class="fas fa-shopping-cart">
+                                  <span id="count"style="color:red;"></span>
+                                </i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link mx-2">
+                              <i class="fa-regular fa-user"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!------------------------------------------------------------ONE PRODUCT ITEM ------------------------------------------------------------>
+
+<section style="height: 100%; background: linear-gradient(to right, #f8f9fa, #e9ecef);">
+  <div class="container py-4">
+    <div class="row justify-content-center">
+
+      <!-- Shopping Cart Column -->
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="card mb-4" style="border-radius: 10px;">
+          <div class="card-header bg-dark text-white" style="padding: 1rem;">
+            <h5 class="mb-0 font-weight-bold">Shopping Cart</h5>
+          </div>
+          <div class="card-body" id="cart-items" style="padding: 1.5rem;">
+            <!-- Cart items will go here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary Column -->
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card mb-4" style="border-radius: 10px;">
+          <div class="card-header bg-light" style="padding: 1rem;">
+            <h5 class="mb-0 font-weight-bold">Order Summary</h5>
+          </div>
+          <div class="card-body" style="padding: 1.5rem;">
+            <ul class="list-unstyled mb-0">
+              <div id="cart-message" style="display:none; color: #155724; background-color: #d4edda; padding: 10px; border-radius: 5px; border: 1px solid #c3e6cb; position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 9999; width: 300px; text-align: center;">
+                <span id="cart-message-text"></span>
+              </div>
+
+              <li class="d-flex justify-content-between mb-3">
+                <div><strong>Subtotal</strong></div>
+                <span id="subtotal" style="font-weight: bold;">Rs 0</span>
+              </li>
+              <li class="d-flex justify-content-between text-muted mb-2">
+                <div>Estimated Tax</div>
+                <span id="tax">Rs 0</span>
+              </li>
+              <li class="d-flex justify-content-between text-muted">
+                <div>Estimated Shipping & Handling</div>
+                <span id="shipping">Rs 50</span>
+              </li>
+              <li class="d-flex justify-content-between mt-4">
+                <div><strong>Total</strong></div>
+                <span id="total" style="font-weight: bold;">Rs 0</span>
+              </li>
+            </ul>
+            <a href="Checkout.html" class="btn btn-dark btn-block mt-3" style="font-size: 0.9rem;">
+              Checkout
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!------------------------------------------------------------SECTION 8------------------------------------------------------------>
+
+ <section class="Eith-section text-center p-5" style="background-color: rgba(0, 0, 0, 1);">
+  <div class="container text-center text-md-start mt-5">
+    <div class="row d-flex justify-content-between"> 
+      
+      <div class="col-md-3 col-lg-4 text-white">
+        <h1 class="fs-3">Cyber</h1>
+        <p class="fs-6 text-white fade-in mt-4" style="opacity: 0.5;">
+          We are a residential interior design firm located in Portland. Our boutique-studio offers more than
+        </p>
+        <div class="d-flex justify-content-start align-items-start gap-1 py-5">
+          <img src="../ImgAssets/Twitter.png" alt="Twitter Logo" class="img-fluid mx-3">
+          <img src="../ImgAssets/Facebook.png" alt="Facebook Logo" class="img-fluid mx-3">
+          <img src="../ImgAssets/Tiktok.png" alt="TikTok Logo" class="img-fluid mx-3">
+          <img src="../ImgAssets/Instagram.png" alt="Instagram Logo" class="img-fluid mx-3">
+        </div>
+      </div>
+
+      <div class="col-md-2 col-lg-2 text-white text-center">
+        <h6 class="text-white fs-4 fw-bold mb-4">
+          Services
+        </h6>
+        <p style="opacity: 0.6;">Bonus Program</p>
+        <p style="opacity: 0.6;">Gift Cards</p>
+        <p style="opacity: 0.6;">Credit and Payment</p>
+        <p style="opacity: 0.6;">Service Contracts</p>
+        <p style="opacity: 0.6;">On-Cash Account</p>
+        <p style="opacity: 0.6;">Payment</p>
+      </div>
+
+      <div class="col-md-6 col-lg-6 text-white text-center">
+        <h6 class="text-white fs-4 fw-bold mb-4">
+          Assistance to the Buyer
+        </h6>
+        <p style="opacity: 0.6;">
+          <a href="#!" class="tex-start"></a>
+        </p>
+        <p style="opacity: 0.6;">Find an order</p>
+        <p style="opacity: 0.6;">Terms of delivery</p>
+        <p style="opacity: 0.6;">Exchange and return of goods</p>
+        <p style="opacity: 0.6;">Guarantee</p>
+        <p style="opacity: 0.6;">Terms of use of the site</p>
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">      
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFx2eVPIIhDbfgy2ZzOluHVRnHppE7RZC2wqi2UAKQSA8zBtQ+8W1T4K5g" crossorigin="anonymous"></script>
+    </body>
+    <script src="../JS/cart.js"></script>
+    </html>
+    
+
+
+
+
