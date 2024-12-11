@@ -28,7 +28,7 @@ async function viewSingleProduct(productId) {
         const productCard = `
             <div class="row d-flex justify-content:space-between">
                 <div class="col-md-5 col-sm-12 py-5 text-center">
-                    <img class="image" src="${image}" width="300px" height="300px" />
+                    <img class="image" src="${image}" width="300px" height="300px" style="object-fit: contain"/>
                 </div>
                 <div class="col-md-5 py-5">
                     <h4 class="text-uppercase text-muted">${title}</h4>
@@ -110,7 +110,7 @@ async function viewRelatedProducts(category, excludeProductId) {
 
             <div class=" col-md-3 ms-3 me-5 mx-1 col-sm-6 mb-4">
          <div class="card bg-light" style="border:none">
-        <img src="${product.image}" class="card-img-top" alt="${product.title}" height="200px">
+        <img src="${product.image}" class="card-img-top" alt="${product.title}" height="200px" style=" object-fit: contain">
         <div class="card-body">
             <h5 class="card-title">${product.title}</h5>
             <p class="card-text">INR ${product.price}</p>
@@ -135,7 +135,7 @@ function addToCart(id, title, price) {
         id,
         title,
         price,
-        quantity: 1 // Fixed typo here
+        quantity: 1 
     };
 
     let cart = JSON.parse(localStorage.getItem('cart'));
@@ -154,13 +154,7 @@ function addToCart(id, title, price) {
         console.log(`New item added: ${JSON.stringify(cartItem)}`);
     }
     localStorage.setItem('cart', JSON.stringify(cart));
-        Swal.fire({
-            title: "Added!",
-            text: "Item successfully added to your cart.",
-            icon: "success",
-            timer: 20000, 
-            timerProgressBar: true 
-        });
+    alert(`${title}`)
     
 }
 
@@ -197,48 +191,74 @@ document.addEventListener('DOMContentLoaded',  ()=> {
 ///////////////////////////////////////////////////////////REVIEWS JASONS////////////////////////////////////////////////////////////
 async function jasondata() {
     try {
+      
         const response = await fetch('/Assets/js/Reviews.json');
         const products = await response.json();
         console.log(products);
 
         const productContainer = document.getElementById('ProductReview');
-        productContainer.innerHTML = '';
+        productContainer.innerHTML = ''; 
 
-        let rowContent = ''; 
-        products.forEach((product, index) => {
-            const { star, description, name, details } = product; 
+        
+        productContainer.innerHTML += `<h3>Reviews⭐⭐</h3>`;
 
-            const starRating = Array.from({ length: 5 }, (_, index) => {
-                return index < star ? '⭐' : '⛤'; 
+      
+        const visibleLimit = 3;
+        
+       
+        const initialProductCards = products.slice(0, visibleLimit).map(({ star, description, name, details }) => {
+            const starRating = getStarRating(star);
+            return createProductCard(name, starRating, description, details);
+        }).join('');
+
+        productContainer.innerHTML += `<div class="row">${initialProductCards}</div>`;
+
+        const viewMoreBtn = document.createElement('button');
+        viewMoreBtn.classList.add('btn', 'btn-primary');
+        viewMoreBtn.style.cssText = 'display: block; margin-top: 20px; margin-left: auto; margin-right: auto; text-align: center; background-color: white; color: black; font-size: 20px; padding: 12px 24px; border: 2px solid black; border-radius: 10px;width:250px; fas fa-chevron-down mx-2"';
+        viewMoreBtn.innerText = 'View More';
+        
+      
+        productContainer.appendChild(viewMoreBtn);
+        
+        
+     
+        viewMoreBtn.addEventListener('click', () => {
+            viewMoreBtn.style.display = 'none';
+
+            
+            const additionalProductCards = products.slice(visibleLimit).map(({ star, description, name, details }) => {
+                const starRating = getStarRating(star);
+                return createProductCard(name, starRating, description);
             }).join('');
-
-            const productCard = `
-          
-            <div class="col-12 p-5 col-sm-6 col-md-4 mb-3">
-                <div class="card bg-light"">
-                    <div class="card-body">
-                        <h5 class="card-title">${name}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">${starRating}</h6>
-                        <p class="card-text">${description}</p>
-                        <div class="details" style="display:none;">
-                            <p>${details}</p> <!-- Additional details -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `;
-
-            rowContent += productCard;
-
-           
-            if ((index + 1) % 3 === 0 || index === products.length - 1) {
-                productContainer.innerHTML += `<div class="row">${rowContent}</div>`;
-                rowContent = ''; 
-            }
+            productContainer.innerHTML += `<div class="row">${additionalProductCards}</div>`;
         });
+
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
+
+function getStarRating(star) {
+    return Array.from({ length: 5 }, (_, i) => i < star ? '⭐' : '⛤').join('');
+}
+
+function createProductCard(name, starRating, description, details) {
+    return `
+        <div class=" bg-light col-12 p-5 col-sm-6 col-md-4 mb-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">${name}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${starRating}</h6>
+                    <p class="card-text">${description}</p>
+                    <div class="details" style="display:none;">
+                        <p>${details}</p> <!-- Additional details -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
 
 jasondata();
