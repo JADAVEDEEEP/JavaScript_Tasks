@@ -1,17 +1,4 @@
 ////////////////////////////////////////////////////////// SCROLLING CONTENT ////////////////////////////////////////////////////////////////
-const prevButton = document.getElementById('prevButton');
-  const nextButton = document.getElementById('nextButton');
-  const scrollContainer = document.querySelector('.category-scroll-container');
-   const card = document.getElementById('card')
-
-  prevButton.addEventListener('click', () => {
-    scrollContainer.scrollBy({ left: -200, behavior: 'smooth' });
-  });
-
-  nextButton.addEventListener('click', () => {
-    scrollContainer.scrollBy({ left: 200, behavior: 'smooth' });
-  });
-  
 
 
   /////////////////////////////////////////////////////////////////////GET ALL PRODCUTS ////////////////////////////////////////////////////////
@@ -31,11 +18,11 @@ const prevButton = document.getElementById('prevButton');
 
           
             const productCard = `
-            <div class="col-lg-3 col-md-6 col-sm-12 p-4 mb-1">
-            <div class="card h-103 d-flex align-items-center justify-content-center"" 
-              onclick="window.location.href='OneProduct.html?id=${id}'" 
+           <div class="col-lg-3 col-md-6 col-sm-12 p-4 mb-1">
+    <div class="card h-103 d-flex align-items-center justify-content-center" 
+         onclick="window.location.href='OneProduct.html?id=${id}'" 
          id="card-${id}" 
-         style="width: 250px; height: 400px; border: none; text-align: center; margin: 0 auto;">
+         style="width: 250px; height: 400px; border: none; text-align: center; margin: 0 auto; background-color: #f8f9fa;">
         <div class="card-body d-flex flex-column align-items-center p-4 justify-content-center">
             <img src="${image}" 
                  alt="${title}" 
@@ -48,9 +35,10 @@ const prevButton = document.getElementById('prevButton');
                 style="font-size: 0.9rem; font-weight: bold; margin-bottom: 6px;">
                 INR ${price}
             </h5>
-            
+        </div>
     </div>
 </div>
+
 `;
         
 
@@ -79,10 +67,10 @@ async function fetchAndDisplayCategory() {
   
         const productCard = `
           <div class="col-lg-3 col-md-6 col-sm-12 mt-5">
-            <div class="card h-110 d-flex align-items-center justify-content-center" 
+            <div class="card bg-light h-110 d-flex align-items-center justify-content-center" 
               id="card-${id}" 
               style="width: 250px; height: 400px; border: none;  text-align: center; margin: 0 auto;">
-              <div class="card-body d-flex flex-column align-items-center p-4 justify-content-center">
+              <div class="card-body d-flex flex-column align-items-center p-4 justify-content-center"onclick="window.location.href='OneProduct.html?id=${id}'">
                 <img src="${image}" 
                     alt="${title}" 
                     style="height: 200px; width: 200px; object-fit: contain; margin-bottom: 8px;">
@@ -94,11 +82,7 @@ async function fetchAndDisplayCategory() {
                     style="font-size: 0.9rem; font-weight: bold; margin-bottom: 6px;">
                     <s style="color: red;">INR ${price}</s> INR ${discountedPrice}
                 </h5>
-                 <button class="btn btn-dark mt-3" 
-              onclick="window.location.href='OneProduct.html?id=${id}'"
-              style="background-color: #343a40; border-color: #343a40;" alt="Loading....">
-              Buy Now
-              </button>
+                 
             </div>
           </div>
         `;
