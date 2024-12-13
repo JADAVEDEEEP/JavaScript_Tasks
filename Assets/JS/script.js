@@ -1,5 +1,3 @@
-////////////////////////////////////////////////////////// SCROLLING CONTENT ////////////////////////////////////////////////////////////////
-
 
   /////////////////////////////////////////////////////////////////////GET ALL PRODCUTS ////////////////////////////////////////////////////////
 
@@ -26,7 +24,7 @@
         <div class="card-body d-flex flex-column align-items-center p-4 justify-content-center">
             <img src="${image}" 
                  alt="${title}" 
-                 style="height: 190px; width: 100%; object-fit: contain; margin-bottom: 8px;">
+                 style="height: 190px; width: 100%; object-fit: inherit; margin-bottom: 8px;">
             <h5 class="card-title p-2" 
                 style="font-size: 0.9rem; font-weight: bold; margin-bottom: 6px;">
                 ${title}

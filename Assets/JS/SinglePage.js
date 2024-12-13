@@ -39,7 +39,7 @@ async function viewSingleProduct(productId) {
                     <p class="lead mt-3 text-muted fs-6 fw-normal">${description}</p>
                 
                
-                    <button class="btn btn-light text-dark border border-dark" onclick="addToWishlist(${productId}, 'Product Title')">Add to Wishlist</button>
+                    <button class="btn btn-light text-dark border border-dark" onclick="addToWishlist(${productId}, '${product.title}')">Add to Wishlist</button>
                    
 
                   <a href="AddToCart.html" class="btn btn-dark mx-3" 
@@ -111,14 +111,14 @@ async function viewRelatedProducts(category, excludeProductId) {
         const filteredProducts = relatedProducts.filter(product => product.id != excludeProductId);
 
         const relatedProductsContainer = document.getElementById('relatedProducts');
-        let relatedProductsHTML = '<h3 class="mt-5">Related Products</h3><div class="row">';
+        let relatedProductsHTML = '<h3 class="mt-5 fw-normal">Related Products</h3><div class="row d-flex justify-content:space-between">';
 
         filteredProducts.map(product => {
             relatedProductsHTML += `
 
             <div class="mt-5 col-md-3 ms-3 me-5 mx-1 col-sm-6 mb-4">
          <div class="card bg-light" style="border:none">
-        <img src="${product.image}" class="card-img-top" alt="${product.title}" height="200px" style=" object-fit: contain;object-position: 50% 50%;">
+        <img src="${product.image}" class="card-img-top" alt="${product.title}" height="200px" style=" object-fit: inherit;object-position: 50% 50%;">
         <div class="card-body">
             <h5 class="card-title">${product.title}</h5>
             <p class="card-text">INR ${product.price}</p>
@@ -150,7 +150,8 @@ function handleAddToCart(event, productId, title, price) {
         text: `${title} has been added to your cart. Redirecting...`,
         icon: 'success',
         timer: 5000, 
-        showConfirmButton: false
+        showConfirmButton: false,
+        allowOutsideClick : false,
     }).then(() => {
        
         setTimeout(() => {
@@ -250,7 +251,7 @@ async function jasondata() {
         productContainer.innerHTML = ''; 
 
         
-        productContainer.innerHTML += `<h3>Reviews</h3>`;
+        productContainer.innerHTML += `<h3 style="font-family: 'Inter', sans-serif;;">Reviews</h3>`;
 
       
         const visibleLimit = 3;

@@ -13,6 +13,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  
@@ -32,7 +33,7 @@
         
                         <div class="collapse navbar-collapse mx-auto" id="navbarNavDropdown">
                             <input type="text" name="search" class="form-control-lg bg-light input-lg mx-4 col-4 d-none d-lg-block" style="border-radius: 5px; border-color: rgba(245, 245, 245, 1); border:none;" placeholder="Search">
-                            <ul class="navbar-nav" style="justify-content: center;margin-left:40px;">
+                            <ul class="navbar-nav ms-auto" style="justify-content: center;margin-left:40px;">
                                 <li class="nav-item">
                                     <a class="nav-link mx-2" aria-current="page" id="log" href="#">Home</a>
                                 </li>
@@ -51,10 +52,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="AddToCart.html" class="nav-link mx-3">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                </li>
+                                  <a href="AddToCart.html" class="nav-link mx-3">
+                                      <i class="fas fa-shopping-cart"></i>
+                                  </a>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link mx-3">
                                         <i class="fa-regular fa-user"></i>
@@ -86,7 +86,7 @@
         </div>
       </div>
 
-      <!-- Order Summary Column -->
+    
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card mb-4" style="border-radius: 10px;">
           <div class="card-header " style="padding: 1rem;">
@@ -108,16 +108,17 @@
               </li>
               <li class="d-flex justify-content-between text-muted">
                 <div>Estimated Shipping & Handling</div>
-                <span id="shipping">Rs 50</span>
+                <span id="shipping">Rs 00</span>
               </li>
               <li class="d-flex justify-content-between mt-4">
                 <div><strong>Total</strong></div>
                 <span id="total" style="font-weight: bold;">Rs 0</span>
               </li>
             </ul>
-            <a href="Checkout.html" class="btn btn-dark btn-block mt-3" style="font-size: 0.9rem;">
-              Checkout
-            </a>
+            <button onclick="proceedToCheckout()" class="btn btn-dark">
+               Checkout
+          </button>
+          
           </div>
         </div>
       </div>

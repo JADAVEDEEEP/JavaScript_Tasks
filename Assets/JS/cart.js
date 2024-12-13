@@ -22,7 +22,7 @@ async function loadCart() {
 
   const products = await fetchProducts();
 
-  cartItems.forEach((item, index) => {
+  cartItems.map((item, index) => {
     const product = products.find((p) => p.id === item.id);
 
     if (product) {
@@ -95,8 +95,44 @@ function removeFromCart(index) {
   loadCart();
 }
 
+////////////////////////////////////////////////////////////////Procecced to checkout/////////////////////////////////////////////////
 function proceedToCheckout() {
-  alert('Proceeding to checkout!');
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+  if (cartItems.length === 0) {
+    Swal.fire({
+      title: "Cart Empty",
+      text: "Your cart is empty. Add some items before proceeding to checkout.",
+      icon: "warning",
+      timer: 2000,
+      timerProgressBar: true
+    });
+    return;
+  }
+
+
+  const checkoutData = cartItems.map(item => ({
+    title: item.title,
+    name: item.name,
+    quantity: item.quantity,
+    price: item.price
+  }));
+
+  localStorage.setItem('checkoutCart', JSON.stringify(checkoutData));
+
+  
+  Swal.fire({
+    title: "Ready for Checkout",
+    text: "Your items are ready for checkout!",
+    icon: "success",
+    timer: 3000,
+    timerProgressBar: true,
+    allowOutsideClick : false,
+  }).then(() => {
+ 
+    window.location.href = 'Checkout.html'; 
+  });
 }
+
 
 document.addEventListener('DOMContentLoaded', loadCart);

@@ -104,3 +104,52 @@ cancelButton.addEventListener("click", () => {
 });
 
 displayAddresses();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const checkoutCart = JSON.parse(localStorage.getItem('checkoutCart')) || [];
+  const cartContainer = document.getElementById('shipping-cart');
+  const orderSummary = document.getElementById('order-summary');
+ 
+
+  let subtotal = 0;
+  checkoutCart.forEach((item) => {
+    cartContainer.innerHTML += `
+      <div style="margin-bottom: 1rem;">
+        <p><strong>Product:</strong> ${item.title}</p>
+        <p><strong>Quantity:</strong> ${item.quantity}</p>
+        <p><strong>Price:</strong> Rs ${item.price}</p>
+        <p><strong>Total:</strong> Rs ${item.price * item.quantity}</p>
+        <hr>
+      </div>
+    `;
+    subtotal += item.price * item.quantity;
+  });
+
+
+  orderSummary.textContent = `Subtotal: Rs ${subtotal.toFixed(2)}`;
+});
+function placeOrder() {
+  const serviceId = 'service_vkcmexa'
+  const temepleteId = 'template_9f9dsem'
+  const publickey = 'KiTRU_Qt_Dmx7Em5X'
+
+  emailjs.init(publickey)
+  emailjs.send(serviceId,temepleteId)
+  
+  localStorage.removeItem('checkoutCart');
+  localStorage.removeItem('cart');
+
+  Swal.fire({
+    title: "Order Placed!",
+    text: "Your order has been successfully placed.",
+    icon: "success",
+    timer: 5000, 
+    timerProgressBar: true,
+    showConfirmButton: false,
+    allowOutsideClick : false,
+  }).then(() => {
+   
+    window.location.href = 'Index.html'; 
+  });
+}

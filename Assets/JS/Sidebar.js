@@ -48,9 +48,9 @@ async function fetchAndDisplayProducts(category = '') {
                                 style="font-size: 0.9rem; font-weight: bold; margin-bottom: 6px;">
                                 INR ${price}
                             </h5>
-                            <button class="btn btn-dark mt-3" 
+                            <button class="btn btn-dark mt-3  w-100 btn btn-lg" 
                                     onclick="window.location.href='OneProduct.html?id=${id}'"
-                                    style="background-color: #343a40; border-color: #343a40;" alt="Loading....">
+                                    style="background-color: #343a40; border-color: #343a40;border-radius:8px;font-size:1rem" alt="Loading....">
                                 Buy Now
                             </button>
                         </div>
